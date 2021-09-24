@@ -42,13 +42,13 @@ public class GraphicsDemo extends JPanel{ // inherits JPanel
                     g2D.setColor(Color.blue);
                 } else if (c >= 130 && c < 135){
                     g2D.setColor(Color.yellow);
-                }  else if (c >= 135 && c < 192){
+                } else if (c >= 135 && c < 192){
                     g2D.setColor(new Color(0,150,0)); //green
                 } else if (c >= 192 && c < 230){
                     g2D.setColor(Color.gray);
                 } else if (c == 999){
                     g2D.setColor(Color.orange);
-                }else {
+                } else {
                     g2D.setColor(Color.white);
                 } 
                 
