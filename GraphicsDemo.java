@@ -27,6 +27,7 @@ public class GraphicsDemo extends JPanel{ // inherits JPanel
         
         double m = 256.0 / (perlin.max - perlin.min);
         double b = m * (-1 * perlin.min);
+        int backup_c = 100;
        
         for (int x = 0; x < 500; x++){
             for (int y = 0; y < 500; y++){
@@ -34,9 +35,9 @@ public class GraphicsDemo extends JPanel{ // inherits JPanel
                 int c = (int)(m * perlin.pixel[x][y] + b) - 1;
                 
                 if(c < 0){ //error, dead pixels
-                    c = (int)(m * perlin.pixel[x][y-1] + b) - 1; //revert back one
+                    c = backup_c;
+                    //continue;
                 } 
-                
                 
                 if (c < 130){
                     g2D.setColor(Color.blue);
@@ -46,12 +47,10 @@ public class GraphicsDemo extends JPanel{ // inherits JPanel
                     g2D.setColor(new Color(0,150,0)); //green
                 } else if (c >= 192 && c < 230){
                     g2D.setColor(Color.gray);
-                } else if (c == 999){
-                    g2D.setColor(Color.orange);
                 } else {
                     g2D.setColor(Color.white);
                 } 
-                
+                backup_c = c;
                 //g2D.setColor(new Color(c,c,c)); // uncomment this if you want to see just the perlin noise
                 g2D.fillRect(x,y,1,1);
            }
